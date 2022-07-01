@@ -32,7 +32,12 @@ func main() {
 	phones := repository.FileToVar(phonesPath)
 	//
 	for {
-		if time.Now().Local().Hour() >= 9 && time.Now().Local().Hour() <= 21 {
+		msk, err := time.LoadLocation("Europe/Moscow")
+		if err != nil {
+			logger.Warnf("\nUnable to set location MSK +3, error:%v\n", err)
+
+		}
+		if time.Now().UTC().Hour() >= 12 && time.Now().UTC().Hour() <= 23 {
 
 			data.Fill(token, names, phones)
 
@@ -51,7 +56,7 @@ func main() {
 
 			}
 
-			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().Local().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
+			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().UTC().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
 			err = resp.Body.Close()
 			if err != nil {
 				logger.Panicf("\nUnable to close body, error%v\n", err)
