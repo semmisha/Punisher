@@ -14,8 +14,8 @@ import (
 
 const (
 	punURL     = "https://vagner-skoda.ru/form/2"
-	namesPath  = "./files/names.txt"
-	phonesPath = "./files/phones.txt"
+	namesPath  = "app/files/names.txt"
+	phonesPath = "app/files/phones.txt"
 	token      = "klPGmOEqsWYpBodl3NkMgHJnxqxArxingzAh8pcE"
 )
 
