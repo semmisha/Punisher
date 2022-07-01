@@ -32,11 +32,7 @@ func main() {
 	phones := repository.FileToVar(phonesPath)
 	//
 	for {
-		msk, err := time.LoadLocation("Europe/Moscow")
-		if err != nil {
-			logger.Warnf("\nUnable to set location MSK +3, error:%v\n", err)
 
-		}
 		if time.Now().UTC().Hour() >= 12 && time.Now().UTC().Hour() <= 23 {
 
 			data.Fill(token, names, phones)
