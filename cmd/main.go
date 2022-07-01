@@ -32,7 +32,7 @@ func main() {
 	phones := repository.FileToVar(phonesPath)
 	//
 	for {
-		if time.Now().Hour() >= 9 && time.Now().Hour() <= 21 {
+		if time.Now().Local().Hour() >= 9 && time.Now().Local().Hour() <= 21 {
 
 			data.Fill(token, names, phones)
 
@@ -51,7 +51,7 @@ func main() {
 
 			}
 
-			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
+			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().Local().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
 			err = resp.Body.Close()
 			if err != nil {
 				logger.Panicf("\nUnable to close body, error%v\n", err)
