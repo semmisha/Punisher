@@ -50,7 +50,8 @@ func main() {
 				logger.Panicf("\nUnable to receive respnonse, error%v\n", err)
 
 			}
-			logger.Printf("Name: %v Phone:%v ApiResponse status: %v\n ", data.Name, data.Telephone, resp.StatusCode)
+
+			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
 			err = resp.Body.Close()
 			if err != nil {
 				logger.Panicf("\nUnable to close body, error%v\n", err)
