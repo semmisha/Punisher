@@ -33,7 +33,7 @@ func main() {
 	//
 	for {
 
-		if time.Now().UTC().Hour() >= 12 && time.Now().UTC().Hour() <= 23 {
+		if time.Now().UTC().Hour() >= 6 && time.Now().UTC().Hour() <= 21 {
 
 			data.Fill(token, names, phones)
 
@@ -52,7 +52,7 @@ func main() {
 
 			}
 
-			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v\n ", time.Now().UTC().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
+			logger.Printf("Time: %v Name: %v Phone:%v ApiResponse status: %v", time.Now().UTC().Format(time.Kitchen), data.Name, data.Telephone, resp.StatusCode)
 			err = resp.Body.Close()
 			if err != nil {
 				logger.Panicf("\nUnable to close body, error%v\n", err)
@@ -61,7 +61,7 @@ func main() {
 			randDuration := utils.TimeRandom()
 			time.Sleep(randDuration * time.Minute)
 		}
-		fmt.Println("Z-z-z-z-z-z")
+		logger.Println("Z-z-z-z-z-z")
 		time.Sleep(30 * time.Minute)
 	}
 
