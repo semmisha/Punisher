@@ -60,9 +60,10 @@ func main() {
 			}
 			randDuration := utils.TimeRandom()
 			time.Sleep(randDuration * time.Minute)
+		} else {
+			logger.Println("Z-z-z-z-z-z")
+			time.Sleep(30 * time.Minute)
 		}
-		logger.Println("Z-z-z-z-z-z")
-		time.Sleep(30 * time.Minute)
 	}
 
 }
